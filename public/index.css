@@ -1,0 +1,101 @@
+
+*{
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  box-sizing: border-box;
+  color: white;
+  overflow-x: hidden;
+  
+}
+
+
+
+
+.titulo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: 3px solid white;
+}
+
+
+.info{
+  display: flex;
+}
+.letra{
+  font-size: 30px;
+}
+
+.logo{
+  height: 30px;
+  width:auto;
+}
+
+
+
+.contenedor{
+  display: grid;
+  height: 100vh;
+  outline: 3px solid white;
+  border: 2px solid white;
+  grid-template-rows: 0.3fr 2fr;
+  background-image: linear-gradient(to bottom right,#0094b9,#0575E6);
+}
+.scroll-vertical{
+  margin: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 0.3fr 1fr 1fr 1fr ;
+}
+
+
+.fecha{
+  display: flex;
+  background-color: transparent;
+  align-items: center;
+  text-align: center;
+  height: 90%;
+  width: 100%;
+  border: 3px solid white;
+  grid-column:3/3 ;
+}
+
+
+
+.imagenes{
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  background-color: transparent;
+  height: 100%;
+  width: 100%;
+  border-top: 3px solid white;
+  grid-column:1/4;
+  grid-row:2/5;
+}
+
+.imagen{
+  padding-bottom: 20px;
+}
+
+.img{
+  background-color: transparent;
+  border: 3px solid white;
+}
+
+
+.fechap{
+  color: white;
+  height: 10%;
+}
+
+.descripcion{
+  height: 20%;
+  color: white;
+}
+
+
+
+
+

@@ -1,0 +1,115 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Fondo de la página */
+  body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom right,#0094b9,#0575E6);
+    padding: 0;
+  }
+  
+  /* Contenedor del login - ocupa casi toda la pantalla */
+  .login-container {
+    background: linear-gradient(white);
+    padding: 60px 40px;
+    border-radius: 5%; /* sin bordes para full screen */
+    width: 70%;
+    height: 50%; /* ocupa toda la pantalla */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid black;
+  }
+  
+  /* Título */
+  .login-container h2 {
+    margin-bottom: 50px;
+    color: #333;
+    font-size: 4rem; /* gigante */
+  }
+  
+  /* Inputs */
+  .login-container input {
+    width: 90%;
+    max-width: 600px;
+    padding: 30px 25px; /* gigante para toque */
+    margin: 25px 0;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    font-size: 2rem; /* gigante */
+  }
+  
+  .login-container input:focus {
+    border-color: #4facfe;
+    outline: none;
+    box-shadow: 0 0 15px rgba(79,172,254,0.6);
+  }
+  
+  /* Botones */
+  .login-container button {
+    width: 90%;
+    max-width: 600px;
+    padding: 30px; /* gigante */
+    margin-top: 30px;
+    border: none;
+    border-radius: 20px;
+    background-color: #4facfe;
+    color: white;
+    font-size: 2rem; /* gigante */
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .login-container button:hover {
+    background-color: #00f2fe;
+  }
+  
+  /* Línea divisoria */
+  .login-container hr {
+    margin: 40px 0;
+    width: 90%;
+    border: 0;
+    border-top: 2px solid #ccc;
+  }
+  
+  /* Botón secundario */
+  .login-container button:nth-of-type(2) {
+    background-color: #eee;
+    color: #333;
+  }
+  
+  .login-container button:nth-of-type(2):hover {
+    background-color: #ddd;
+  }
+  
+  /* Responsivo extremo para móviles pequeños */
+  @media (max-width: 480px) {
+    .login-container {
+      padding: 40px 20px;
+    }
+  
+    .login-container h2 {
+      font-size: 3.5rem;
+    }
+  
+    .login-container input,
+    .login-container button {
+      font-size: 1.8rem;
+      padding: 25px;
+    }
+  
+    .login-container hr {
+      margin: 30px 0;
+    }
+  }
+  
