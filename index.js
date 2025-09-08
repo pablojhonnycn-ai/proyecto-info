@@ -50,6 +50,13 @@ app.get('/login', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/login.html'));
 });
 
+
+// Ruta protegida para borrar.html
+app.get('/borrar', proteger, (req, res) => {
+  res.sendFile(path.join(__dirname, 'borrar.html'));
+});
+
+
 // Procesar login
 app.post('/login', (req, res) => {
   const { usuario, password } = req.body;
@@ -105,5 +112,26 @@ app.get('/feed', (req, res) => {
     res.json(results);
   });
 });
+
+
+// Borrar una imagen
+app.delete('/imagenes/:id', (req, res) => {
+  const id = req.params.id;
+
+  const sql = 'DELETE FROM imagenes WHERE id = ?';
+  connection.query(sql, [id], (err, result) => {
+    if (err) {
+      console.error('Error al borrar:', err);
+      return res.status(500).json({ error: 'Error en el servidor' });
+    }
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: 'Imagen no encontrada' });
+    }
+
+    res.json({ mensaje: 'Imagen borrada correctamente', id });
+  });
+});
+
 
 app.listen(3000, '0.0.0.0', () => console.log('Servidor corriendo en puerto 3000'));

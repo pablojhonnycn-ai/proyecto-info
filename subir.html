@@ -6,28 +6,33 @@
     <link rel="stylesheet" href="subir.css">
     <script src="subir.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Subir Imagen</title>
 </head>
 <body>
     <div class="contenedor">
-      
         <h2>Subir Imagen (Solo Director)</h2>
+
         <form action="/subir" method="POST" enctype="multipart/form-data">
-        <input type="file" name="imagen" required>
-        <input type="text" name="descripcion" placeholder="Descripción">
-        <button type="submit">Subir Imagen</button>
+            <input type="file" name="imagen" required>
+            <input type="text" name="descripcion" placeholder="Descripción">
+            <button type="submit">Subir Imagen</button>
         </form>
-        <button id="boton" type="submit">recetear</button>
-      
+
+        <button id="boton" type="button">Recetear</button>
+        <!-- 🔹 Nuevo botón para ir a borrar.html -->
+        <button id="irBorrar" type="button">Ir a borrar imágenes</button>
     </div>
 
     <script>
-        const boton=document.getElementById("boton")
+        const boton = document.getElementById("boton");
+        boton.addEventListener("click", () => {
+            location.reload();
+        });
 
-boton.addEventListener("click",()=>{
-    location.reload()
-})
+        const irBorrar = document.getElementById("irBorrar");
+        irBorrar.addEventListener("click", () => {
+            window.location.href = "/borrar"; // 👈 redirige a la ruta /borrar
+        });
     </script>
-
 </body>
 </html>
