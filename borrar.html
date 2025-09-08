@@ -3,36 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>Borrar Descripciones</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-    .descripcion-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    button {
-      background-color: #f44336;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 3px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #d32f2f;
-    }
-  </style>
+  <link rel="stylesheet" href="borrar.css">
 </head>
 <body>
-  <h2>Descripciones de Imágenes</h2>
-  <div id="listaDescripciones"></div>
+  <h2>info</h2>
+  <div class="contenedor">
+    <div class="contenido" id="listaDescripciones"></div>
+  </div>
 
   <script>
     async function cargarDescripciones() {
@@ -48,8 +25,8 @@
           const div = document.createElement('div');
           div.classList.add('descripcion-item');
           div.innerHTML = `
-            <span>${item.descripcion || '(Sin descripción)'}</span>
-            <button data-id="${item.id}">Borrar</button>
+            <span class="descripcion">${item.descripcion || '(Sin descripción)'}</span>
+            <button class="boton" data-id="${item.id}">Borrar</button>
           `;
           contenedor.appendChild(div);
 
