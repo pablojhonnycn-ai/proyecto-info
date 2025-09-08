@@ -16,7 +16,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  outline: 3px solid white;
+  
   font-size: 3rem;
   font-weight: bold;
 }
@@ -39,10 +39,10 @@
 .contenedor{
   display: grid;
   height: 100vh;
-  outline: 3px solid white;
-  border: 2px solid white;
+  border: 5px solid white;
+  border: 5px solid white;
   grid-template-rows: 0.3fr 2fr;
-  background-image: linear-gradient(to bottom right,#0094b9,#0575E6);
+  background-image: linear-gradient(to right top, #1e3c72, #21417b, #244785, #274c8e, #2a5298);
 }
 .scroll-vertical{
   margin: 10px;

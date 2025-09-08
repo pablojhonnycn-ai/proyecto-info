@@ -6,6 +6,19 @@ const session = require('express-session');
 
 const app = express();
 
+
+// Middleware para permitir solo Android
+app.use((req, res, next) => {
+  const userAgent = req.headers["user-agent"] || "";
+
+  if (/Android/i.test(userAgent)) {
+    next(); // ✅ Deja pasar si es Android
+  } else {
+    res.status(403).send("🚫 Este sitio solo está disponible para dispositivos Android 📱");
+  }
+});
+
+
 // Conexión a MySQL
 const connection = mysql.createConnection({
   host: 'localhost',
