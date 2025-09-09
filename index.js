@@ -34,7 +34,8 @@ connection.connect(err => {
 });
 
 // Middleware
-app.use(express.static(path.join(__dirname, 'public'))); // Archivos estáticos
+// 🚫 Desactivar index.html por defecto
+app.use(express.static(path.join(__dirname, 'public'), { index: false }));
 app.use(express.urlencoded({ extended: true }));
 
 // Sesiones
@@ -53,9 +54,9 @@ function proteger(req, res, next) {
 }
 
 // --- Rutas públicas ---
-// Página principal
+// Página principal → redirige al login
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/index.html'));
+  res.redirect('/login');
 });
 
 // Página de login
@@ -63,12 +64,10 @@ app.get('/login', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/login.html'));
 });
 
-
 // Ruta protegida para borrar.html
 app.get('/borrar', proteger, (req, res) => {
   res.sendFile(path.join(__dirname, 'borrar.html'));
 });
-
 
 // Procesar login
 app.post('/login', (req, res) => {
@@ -126,7 +125,6 @@ app.get('/feed', (req, res) => {
   });
 });
 
-
 // Borrar una imagen
 app.delete('/imagenes/:id', (req, res) => {
   const id = req.params.id;
@@ -145,6 +143,5 @@ app.delete('/imagenes/:id', (req, res) => {
     res.json({ mensaje: 'Imagen borrada correctamente', id });
   });
 });
-
 
 app.listen(3000, '0.0.0.0', () => console.log('Servidor corriendo en puerto 3000'));
