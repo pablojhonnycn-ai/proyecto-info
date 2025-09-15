@@ -30,7 +30,7 @@ const connection = mysql.createConnection({
 
 connection.connect(err => {
   if (err) throw err;
-  console.log('Conectado a la base de datos');
+  console.log('Conectado a la base de  datos');
 });
 
 // Middleware
