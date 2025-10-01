@@ -4,22 +4,13 @@ const path = require('path');
 const mysql = require('mysql2');
 const session = require('express-session');
 
+
 const app = express();
 
 
-// Middleware para permitir solo Android
-// app.use((req, res, next) => {
-//   const userAgent = req.headers["user-agent"] || "";
-
-//   if (/Android/i.test(userAgent)) {
-//     next(); // ✅ Deja pasar si es Android
-//   } else {
-//     res.status(403).send("🚫 Este sitio solo está disponible para dispositivos Android 📱");
-//   }
-// });
 
 
-// Conexión a MySQL
+// Conexión a mi base de datos
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -33,7 +24,7 @@ connection.connect(err => {
   console.log('Conectado a la base de  datos');
 });
 
-// Middleware
+// Middleware(ia)
 // 🚫 Desactivar index.html por defecto
 app.use(express.static(path.join(__dirname, 'public'), { index: false }));
 app.use(express.urlencoded({ extended: true }));
@@ -73,7 +64,7 @@ app.get('/borrar', proteger, (req, res) => {
 app.post('/login', (req, res) => {
   const { usuario, password } = req.body;
 
-  // Ejemplo con datos fijos (puedes luego usar MySQL)
+  // Ejemplo con datos fijos 
   if (usuario === "admin" && password === "1234") {
     req.session.autenticado = true;
     res.redirect('/subir'); // Redirige a la ruta protegida
