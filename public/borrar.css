@@ -64,3 +64,7 @@ span{
     font-weight: bold;
     color: white;
 }
+
+.boton:hover{
+    background-color: darkred;
+}
