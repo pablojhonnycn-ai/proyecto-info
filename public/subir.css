@@ -1,4 +1,4 @@
-/* Reset básico */
+
 * {
     margin: 0;
     padding: 0;
@@ -14,7 +14,7 @@
     background-image: linear-gradient(to right top, #1e3c72, #21417b, #244785, #274c8e, #2a5298);
   }
   
-  /* Contenedor principal */
+ 
   .contenedor {
     background: #fff;
     padding: 2rem;
@@ -24,13 +24,13 @@
     text-align: center;
   }
   
-  /* Título */
+ 
   .contenedor h2 {
     margin-bottom: 1rem;
     color: #333;
   }
   
-  /* Inputs */
+
   .contenedor input[type="file"],
   .contenedor input[type="text"] {
     width: 100%;
@@ -41,7 +41,7 @@
     font-size: 0.9rem;
   }
   
-  /* Botones */
+
   .contenedor button {
     width: 100%;
     padding: 0.7rem;
