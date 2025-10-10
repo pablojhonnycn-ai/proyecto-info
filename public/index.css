@@ -6,24 +6,36 @@
   box-sizing: border-box;
   color: white;
   overflow-x: hidden;
-  
+  font-family: Arial, sans-serif;
 }
 
 
 
 
 .titulo{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-bottom: 5px solid white;
-  font-size: 3rem;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  border-bottom: 3px solid white;
+  font-size: 2.5rem;
   font-weight: bold;
 }
 
 
+/* .cole{
+  margin: auto;
+  height: 80%;
+  width: 20%;
+  background-image: url(./logo/d5d9fcc7-2a0c-42d9-a729-37a6841bac35-removebg-preview.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  grid-column: 3/4;
+} */
+
 .info{
   display: flex;
+  margin: auto;
+  grid-column: 2/3;
 }
 .letra{
   font-size: 30px;
@@ -39,16 +51,16 @@
 .contenedor{
   display: grid;
   height: 100vh;
-  border: 5px solid white;
-  border: 5px solid white;
-  grid-template-rows: 0.3fr 2fr;
+  border: 3px solid white;
+  grid-template-rows: 0.3fr 2fr ;
   background-image: linear-gradient(to right top, #1e3c72, #21417b, #244785, #274c8e, #2a5298);
 }
 .scroll-vertical{
-  margin: 10px;
+  margin: 1%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 0.3fr 1fr 1fr 1fr ;
+  grid-template-rows: 0.2fr 1fr 1fr ;
+  
 }
 
 
@@ -61,6 +73,7 @@
   width: 100%;
   border: 3px solid white;
   grid-column:3/3 ;
+  overflow-y: hidden;
 }
 
 
@@ -75,6 +88,7 @@
   border-top: 3px solid white;
   grid-column:1/5;
   grid-row:2/5;
+  border-bottom: 3px solid white;
 }
 
 .imagen{
@@ -98,9 +112,58 @@
 }
 
 
-@media screen and (min-width:800px) {
+.sections{
+  display: flex;
+  flex-direction: row;
+  grid-column: 1/2;
+  grid-row: 1/1;
+  position: absolute;
+  background-color: transparent;
+  width: 59%;
+  height: 7%;
+  justify-content: space-evenly;
+  align-items: center;
+  border-bottom: 3px solid white;
+  
+}
+
+
+
+
+.links-:hover{
+  color: rgb(64, 58, 88);
+  text-decoration-line:underline;
+  
+}
+
+/* .secciones{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    grid-row: 3/4;
+    border: 1px solid white;
+  } */
+
+  #comunicados-letra{
+    overflow-y: hidden;
+  }
+
+.cuadres{
+  display: flex;
+  background-color: red;
+  width: 40%;
+  height: 40%;
+}
+
+
+@media screen and (min-width:700px) {
+  
   .contenedor{
     height: 100vh;
+    grid-template-rows: 0.3fr 2fr;
   }
   .imagenes{
     width: 90%;
@@ -118,32 +181,130 @@
 
 
 
-  .caledario{
-    display: flex;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-    grid-row: 2/4;
-    grid-column: 3/4;
-    border: 1px solid white;
-    
+.secciones{
+  display: flex;
+  background-color:transparent;
+  align-items: center;
+  flex-direction: column;
+  grid-column: 3/4;
+  grid-row: 2/4;
+  border: 3px solid white;
+  border-radius: 3%;
+}
+
+.t-discurso{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20%;
+  width: 100%;
+}
+.discurso{
+  padding: 5px;
+ display: flex;
+  justify-content: center;
+
+  height: 80%;
+  width: 100%;
+}
+
+/* .caja{
+  margin: 20px;
+  width: auto;
+  height: 27%;
+  outline: 3px solid white;
+}
+
+.caja-1{
+  background-image: url('./logo/Diseño\ sin\ título\ \(5\).png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:contain;
+  display: flex;
+  border-radius: 25%;
+}
+
+.caja-1::after{
+  margin: auto;
+  content: 'comunicados';
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 2px black;
+}
+
+.caja-1:hover{
+  cursor: pointer;
+  opacity:0.5;
+}
+  
+
+
+
+
+
+
+
+
+
+
+.caja-2{
+  background-image: url('./logo/Diseño\ sin\ título\ \(5\).png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:contain;
+  display: flex;
+  border-radius: 25%;
+}
+
+.caja-2::after{
+  margin: auto;
+  content: 'comunicados';
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 2px black;
+}
+
+.caja-2:hover{
+  cursor: pointer;
+  opacity:0.5;
+}
+
+  */
+
+  .sections{
+    width: 59%;
+    justify-content:flex-start;
   }
 
-  .calendario2{
-    display: flex;
-    align-items: center;
+  .links-{
+    font-size: 1.4rem;
+    margin-left: 4%;
   }
+
+
 
  
 }
 
 
+
 @media screen and (min-width:900px){
+  
   .imagenes{
     margin-left: 25%;
     width: 50%;
   }
 
+ 
   
+}
+
+@media screen and (max-width:400px){
+  .cole{
+    background-size: cover;
+    height: 100%;
+    width: 80%;
+  }
+ 
+
+
 }
 

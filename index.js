@@ -60,6 +60,9 @@ app.get('/borrar', proteger, (req, res) => {
   res.sendFile(path.join(__dirname, 'borrar.html'));
 });
 
+app.get("/comunicados",proteger,(req,res)=>{
+  res.sendFile(path.join(__dirname,'comunicados.html'))
+})
 // Procesar login
 app.post('/login', (req, res) => {
   const { usuario, password } = req.body;
@@ -116,6 +119,8 @@ app.get('/feed', (req, res) => {
   });
 });
 
+
+
 // Borrar una imagen
 app.delete('/imagenes/:id', (req, res) => {
   const id = req.params.id;
@@ -133,6 +138,57 @@ app.delete('/imagenes/:id', (req, res) => {
 
     res.json({ mensaje: 'Imagen borrada correctamente', id });
   });
+});
+
+
+
+app.use(express.json()); // <--- esto parsea JSON en req.body
+
+
+
+// Servir el HTML privado
+app.get("/comunicados", proteger, (req,res)=>{
+  res.sendFile(path.join(__dirname,'comunicados.html'))
+});
+
+// Guardar comunicado
+app.post('/comunicados/save', proteger, (req, res) => {
+    const { titulo, descripcion } = req.body;
+    const sql = 'INSERT INTO comunicados (titulo, descripcion) VALUES (?, ?)';
+    connection.query(sql, [titulo, descripcion], (err, result) => {
+        if (err) return res.status(500).json({ error: 'Error al guardar' });
+        res.json({ message: 'Comunicado guardado', id: result.insertId });
+    });
+});
+
+// Listar comunicados
+app.get('/comunicados/list', proteger, (req, res) => {
+    const sql = 'SELECT * FROM comunicados ORDER BY fecha DESC';
+    connection.query(sql, (err, results) => {
+        if (err) return res.status(500).json({ error: 'Error al listar' });
+        res.json(results);
+    });
+});
+
+// Borrar comunicado
+app.delete('/comunicados/:id', proteger, (req, res) => {
+    const id = req.params.id;
+    const sql = 'DELETE FROM comunicados WHERE id = ?';
+    connection.query(sql, [id], (err, result) => {
+        if(err) return res.status(500).json({ error: 'Error al borrar' });
+        if(result.affectedRows === 0) return res.status(404).json({ error: 'No encontrado' });
+        res.json({ mensaje: 'Comunicado borrado', id });
+    });
+});
+
+
+
+app.get('/comunicados/public', (req, res) => {
+    const sql = 'SELECT titulo, descripcion FROM comunicados ORDER BY id DESC';
+    connection.query(sql, (err, results) => {
+        if(err) return res.status(500).json({ error: 'Error al listar' });
+        res.json(results);
+    });
 });
 
 app.listen(3000, '0.0.0.0', () => console.log('Servidor corriendo en puerto 3000'));

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="comunicado.css">
+    <title>Comunicados</title>
+</head>
+<body>
+    <header>
+        <h1>info</h1>
+    </header>
+
+    <div class="contenedor">
+         <h2>ingrese el comunicado</h2>
+        <form id="form1">
+            <label for="titulo1" class="title">Título:</label>
+            <input type="text" id="titulo1" name="titulo1" placeholder="Escribe el título aquí" class="tile-form">
+            <br>
+            <label for="descripcion1">Descripción:</label>
+            <textarea id="descripcion1" name="descripcion1" rows="4" placeholder="Escribe la descripción aquí"></textarea>
+
+            <button type="submit">Enviar comunicado</button>
+        </form>
+    </div>
+
+    <div class="publicados">
+        <h2>Publicados</h2>
+        <div class="publics"></div>
+    </div>
+
+    <script>
+        const form1 = document.getElementById('form1');
+        const container = document.querySelector('.publics');
+
+        // Cargar comunicados existentes
+        function cargarComunicados() {
+            fetch('/comunicados/list', { credentials: 'include' })
+            .then(res => res.json())
+            .then(data => {
+                container.innerHTML = '';
+                data.forEach(c => {
+                    const div = document.createElement('div');
+                    div.classList.add('comunicado');
+                    div.innerHTML = `
+                        <span>${c.titulo}: ${c.descripcion}</span>
+                        <button class="borrar" data-id="${c.id}">Borrar</button>
+                    `;
+                    container.appendChild(div);
+                });
+            })
+            .catch(err => console.error(err));
+        }
+
+        // Enviar formulario
+        form1.addEventListener('submit', function(e){
+            e.preventDefault();
+            const titulo = document.getElementById('titulo1').value;
+            const descripcion = document.getElementById('descripcion1').value;
+
+            fetch('/comunicados/save', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'include',
+                body: JSON.stringify({ titulo, descripcion })
+            })
+            .then(res => res.json())
+            .then(data => {
+                alert('Comunicado guardado');
+                form1.reset();
+                cargarComunicados();
+            })
+            .catch(err => console.error(err));
+        });
+
+        // Borrar comunicado
+        container.addEventListener('click', function(e){
+            if(e.target.classList.contains('borrar')){
+                const id = e.target.getAttribute('data-id');
+                fetch(`/comunicados/${id}`, {
+                    method: 'DELETE',
+                    credentials: 'include'
+                })
+                .then(res => res.json())
+                .then(data => {
+                    alert(data.mensaje);
+                    cargarComunicados();
+                })
+                .catch(err => console.error(err));
+            }
+        });
+
+        // Cargar inicial
+        cargarComunicados();
+    </script>
+</body>
+</html>

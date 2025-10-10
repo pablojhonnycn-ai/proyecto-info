@@ -7,6 +7,7 @@
     <script src="subir.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Subir Imagen</title>
+   
 </head>
 <body>
     <div class="contenedor">
@@ -20,7 +21,8 @@
 
         <button id="boton" type="button">Recetear</button>
         <!-- 🔹 Nuevo botón para ir a borrar.html -->
-        <button id="irBorrar" type="button">Ir a borrar imágenes</button>
+        <button id="irBorrar" class="boton-lila" type="button">Ir a borrar imágenes</button>
+        <button id="ircomunicados" class="boton-comunicados" type="button">comunicados</button>
     </div>
 
     <script>
@@ -33,6 +35,12 @@
         irBorrar.addEventListener("click", () => {
             window.location.href = "/borrar"; // 👈 redirige a la ruta /borrar
         });
+
+        const ircomunicados = document.getElementById("ircomunicados");
+        ircomunicados.addEventListener("click", () => {
+            window.location.href = "/comunicados"; // 👈 redirige a la ruta /borrar
+        });
     </script>
+    
 </body>
 </html>

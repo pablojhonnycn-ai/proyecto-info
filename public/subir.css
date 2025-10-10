@@ -64,11 +64,37 @@
   }
   
   #boton {
-    background: #f44336;
-    color: white;
+    background: white;
+    color: black;
+    border: 1px solid gray;
   }
   
   #boton:hover {
-    background: #c62828;
+    background: gray;
   }
-  
+
+  .boton-lila {
+  background: #f44336; /* lila/morado */
+  color: white;
+}
+
+.boton-lila:hover {
+  background: #c62828; /* un tono más oscuro al pasar el mouse */
+}
+
+.boton-comunicados {
+  background: #43a047; /* verde claro */
+  color: white;
+}
+.boton-comunicados:hover {
+  background: #2e7d32;
+}
+
+
+
+  @media screen and(min-width:1000px) {
+    .contenedor{
+      height: 80%;
+      width: 80%;
+    }
+  }
