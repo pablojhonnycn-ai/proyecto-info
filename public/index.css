@@ -15,13 +15,13 @@
 .titulo{
   display: grid;
   grid-template-columns: repeat(3,1fr);
-  border-bottom: 3px solid white;
+  border-bottom: 2px solid white;
   font-size: 2.5rem;
   font-weight: bold;
 }
 
 
-/* .cole{
+.cole{
   margin: auto;
   height: 80%;
   width: 20%;
@@ -30,7 +30,7 @@
   background-position: center;
   background-repeat: no-repeat;
   grid-column: 3/4;
-} */
+}
 
 .info{
   display: flex;
@@ -51,7 +51,7 @@
 .contenedor{
   display: grid;
   height: 100vh;
-  border: 3px solid white;
+  border: 2px solid white;
   grid-template-rows: 0.3fr 2fr ;
   background-image: linear-gradient(to right top, #1e3c72, #21417b, #244785, #274c8e, #2a5298);
 }

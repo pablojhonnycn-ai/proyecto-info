@@ -7,7 +7,7 @@ const session = require('express-session');
 
 const app = express();
 
-
+app.use(express.json()); 
 
 
 // Conexión a mi base de datos
@@ -45,10 +45,11 @@ function proteger(req, res, next) {
 }
 
 // --- Rutas públicas ---
-// Página principal → redirige al login
+// Página principal → muestra index.html
 app.get('/', (req, res) => {
-  res.redirect('/login');
+  res.sendFile(path.join(__dirname, 'public/index.html'));
 });
+
 
 // Página de login
 app.get('/login', (req, res) => {
@@ -142,7 +143,7 @@ app.delete('/imagenes/:id', (req, res) => {
 
 
 
-app.use(express.json()); // <--- esto parsea JSON en req.body
+
 
 
 
