@@ -4,6 +4,7 @@ const path = require('path');
 const mysql = require('mysql2');
 const session = require('express-session');
 
+require("dotenv").config();
 
 const app = express();
 
@@ -12,11 +13,11 @@ app.use(express.json());
 
 // Conexión a mi base de datos
 const connection = mysql.createConnection({
-  host: 'mysql.railway.internal',
-  user: 'root',
-  password: 'uTuZaplWiAgfqfWnLauPaGIhPqIqpVZc',
-  database: 'railway',
-  port: 3306
+  host: process.env.DB_HOST,
+  user:process.env.DB_USER,
+  password:process.env.DB_PASSWORD,
+  database:process.env.DB_NAME,
+  port:  process.env.DB_PORT
 });
 
 connection.connect(err => {
