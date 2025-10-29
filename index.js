@@ -12,10 +12,10 @@ app.use(express.json());
 
 // Conexión a mi base de datos
 const connection = mysql.createConnection({
-  host: 'localhost',
+  host: 'mysql.railway.internal',
   user: 'root',
-  password: '',
-  database: 'carlosperedo',
+  password: 'uTuZaplWiAgfqfWnLauPaGIhPqIqpVZc',
+  database: 'railway',
   port: 3306
 });
 
