@@ -36,7 +36,7 @@ connection.query(`CREATE TABLE comunicados (
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;`,(err,result)=>{
   if(err){
-    console.log(ocurrio un error)
+    console.log("ocurrio un error")
   }
 
   console.log(result)
