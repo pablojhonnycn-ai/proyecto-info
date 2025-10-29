@@ -28,19 +28,6 @@ connection.connect(err => {
   console.log('Conectado a la base de  datos');
 });
 
-connection.query(`CREATE TABLE comunicados (
-  id INT(11) NOT NULL AUTO_INCREMENT,
-  titulo VARCHAR(255) NOT NULL,
-  descripcion TEXT NOT NULL,
-  fecha TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;`,(err,result)=>{
-  if(err){
-    console.log("ocurrio un error")
-  }
-
-  console.log(result)
-})
 
 // Middleware(ia)
 // 🚫 Desactivar index.html por defecto
